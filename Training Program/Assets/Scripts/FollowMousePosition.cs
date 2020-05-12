@@ -34,15 +34,15 @@ public class FollowMousePosition : MonoBehaviour
         if (Physics.Raycast(mouseRay, out hit, Mathf.Infinity, computerScreen))
         {
             Cursor.visible = false;
-            //Cursor.SetCursor(mouseComputerTexture, hotSpot, cursorMode);
             textureToCam = RenderCam.ViewportToWorldPoint(new Vector3(hit.textureCoord.x, hit.textureCoord.y, 10));
             transform.position = textureToCam;
             renderRay = new Ray(transform.position, transform.forward);
             Debug.DrawRay(renderRay.origin, renderRay.direction * 100);
-
+            //Raycast from mouse pointer
             if (Physics.Raycast(renderRay, out renderHit, Mathf.Infinity))
             {
-                if (Input.GetMouseButton(0))
+                //Right now only the mouse button down is recorded, mouse hover must also be taken into account. 
+                if (Input.GetMouseButtonDown(0))
                 {
                     Debug.Log("Hit" + renderHit.transform.name);
                     var hit = renderHit.transform.GetComponent<IClickable>();
@@ -50,6 +50,7 @@ public class FollowMousePosition : MonoBehaviour
                     {
                         hit.HandleClick();
                     }
+                    /*
                     m_PointerEventData = new PointerEventData(m_EventSystem);
                     m_PointerEventData.position = renderRay.origin;
                     list = new List<RaycastResult>();
@@ -60,7 +61,7 @@ public class FollowMousePosition : MonoBehaviour
                     {
                         Debug.Log("Hit: " + list[0].gameObject.name);
                     }
-
+                    */
                 }
 
             }
