@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Player3DMovePhysics))]
 public class Player3DInputController : MonoBehaviour
 {
+    Player3DMovePhysics movePhysics;
     Vector3 moveDirection, lookRotation, movehorizontal, movevertical;
     public Camera cam;
     float RotY, RotX, moveX, moveY;
@@ -14,9 +15,11 @@ public class Player3DInputController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        movePhysics = GetComponent<Player3DMovePhysics>();
     }
 
     // Update is called once per frame
+    //Move physics to the 
     void Update()
     {
         moveX = Input.GetAxis("Horizontal");
@@ -25,7 +28,8 @@ public class Player3DInputController : MonoBehaviour
         movehorizontal = transform.right * moveX;
         movevertical = transform.forward * moveY;
         moveDirection = (movehorizontal + movevertical);
-        rb.velocity = moveDirection * movespeed;
+        //rb.velocity = moveDirection * movespeed; //physics method 
+        movePhysics.SetMovementDirection(moveDirection * movespeed);
 
         RotY = Input.GetAxisRaw("Mouse X");
         RotX = Input.GetAxisRaw("Mouse Y");
@@ -34,7 +38,8 @@ public class Player3DInputController : MonoBehaviour
         cameraRotation = RotX * looksensitivity;
 
 
-        rb.MoveRotation(rb.rotation * Quaternion.Euler(lookRotation));
+        // rb.MoveRotation(rb.rotation * Quaternion.Euler(lookRotation)); //physics method
+        movePhysics.SetRotation(lookRotation);
         if (cam != null)
         {
 
@@ -42,7 +47,7 @@ public class Player3DInputController : MonoBehaviour
             currentCameraRotationX -= cameraRotation;
             currentCameraRotationX = Mathf.Clamp(currentCameraRotationX, -cameraRotationLimit, cameraRotationLimit);
             //apply rotation to camera 
-            cam.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f);
+            cam.transform.localEulerAngles = new Vector3(currentCameraRotationX, 0f, 0f); //physics method
         }
     }
 }

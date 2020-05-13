@@ -1448,6 +1448,7 @@ GameObject:
   - component: {fileID: 1651500719}
   - component: {fileID: 1651500720}
   - component: {fileID: 1651500722}
+  - component: {fileID: 1651500723}
   m_Layer: 0
   m_Name: Player3D
   m_TagString: Untagged
@@ -1479,7 +1480,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1651500715}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: da4763ad98e1f1447ae254a7f7e1ae84, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -1557,6 +1558,19 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   distanceFromObject: 6
+--- !u!114 &1651500723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651500715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8dc952f1075c14db8639d880a73b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
 --- !u!1 &1691461644
 GameObject:
   m_ObjectHideFlags: 0

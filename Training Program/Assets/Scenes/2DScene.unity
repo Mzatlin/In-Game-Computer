@@ -222,7 +222,6 @@ GameObject:
   m_Component:
   - component: {fileID: 252947549}
   - component: {fileID: 252947548}
-  - component: {fileID: 252947547}
   m_Layer: 0
   m_Name: RenderComputerScreenCamera
   m_TagString: Untagged
@@ -230,14 +229,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &252947547
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 252947546}
-  m_Enabled: 1
 --- !u!20 &252947548
 Camera:
   m_ObjectHideFlags: 0
