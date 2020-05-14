@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 /*Todo: Seperate nested raycasting into their own class
- * Separate Mouse click logic to seperate class
+ * Separate Mouse click logic to seperate class  
  */
 public class FollowMousePosition : MonoBehaviour
 {
@@ -21,6 +21,7 @@ public class FollowMousePosition : MonoBehaviour
     public EventSystem m_EventSystem;
     Vector3 textureToCam;
     public List<RaycastResult> list;
+    IClickable buttonHit;
 
     void Start()
     {
@@ -32,26 +33,42 @@ public class FollowMousePosition : MonoBehaviour
         Debug.DrawRay(cam.transform.position, mouseRay.direction * 100);
         if (Physics.Raycast(mouseRay, out hit, Mathf.Infinity, computerScreen))  //Should be in separate class - converts mouse position to ray.
         {
+            //Set computer cursor to computer screen
             Cursor.visible = false;
             textureToCam = RenderCam.ViewportToWorldPoint(new Vector3(hit.textureCoord.x, hit.textureCoord.y, 10));
             transform.position = textureToCam;
+
             renderRay = new Ray(transform.position, transform.forward);
             Debug.DrawRay(renderRay.origin, renderRay.direction * 100);
             //Raycast from mouse pointer
             if (Physics.Raycast(renderRay, out renderHit, Mathf.Infinity))
             {
+                buttonHit = renderHit.transform.GetComponent<IClickable>();
+                if(buttonHit != null)
+                {
+                    buttonHit.IsHovering = true;
+                }
+
                 //Right now only the mouse button down is recorded, mouse hover must also be taken into account. 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    Debug.Log("Hit" + renderHit.transform.name);
-                    var hit = renderHit.transform.GetComponent<IClickable>();
-                    if (hit != null)
+                  
+                    if (buttonHit != null)
                     {
-                        hit.HandleClick();
+                        buttonHit.HandleClick();
                     }
                 }
 
             }
+            else
+            {
+                if(buttonHit != null)
+                {
+                    buttonHit.IsHovering = false;
+                }
+
+            }
+
         }
         else
         {

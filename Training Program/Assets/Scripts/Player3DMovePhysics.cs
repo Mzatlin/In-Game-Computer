@@ -6,8 +6,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Player3DMovePhysics : MonoBehaviour
 {
-    [SerializeField]
-    float moveSpeed;
     Rigidbody rb;
     Vector3 moveDirection, moveRotation;
     float camRotation;
@@ -41,17 +39,11 @@ public class Player3DMovePhysics : MonoBehaviour
     {
         ApplyMoveDirection();
         ApplyMoveRotation();
-        ApplyCamRotation();
     }
 
     void ApplyMoveDirection()
     {
-        rb.velocity = moveDirection; //* moveSpeed; //physics method 
-    }
-
-    void ApplyCamRotation()
-    {
-     //   throw new NotImplementedException();
+        rb.velocity = moveDirection;
     }
 
     void ApplyMoveRotation()

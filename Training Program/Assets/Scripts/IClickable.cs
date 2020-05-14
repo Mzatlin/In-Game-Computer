@@ -5,4 +5,5 @@ using UnityEngine;
 public interface IClickable {
 
     void HandleClick();
+    bool IsHovering { get; set; }
 }
