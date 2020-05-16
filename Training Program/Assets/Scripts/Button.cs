@@ -12,7 +12,7 @@ public class Button : MonoBehaviour, IClickable {
     {
         if (isHovering)
         {
-            Debug.Log("Hovering");
+      //      Debug.Log("Hovering");
         }
     }
 
