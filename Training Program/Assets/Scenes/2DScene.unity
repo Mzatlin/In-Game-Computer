@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -391,12 +391,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 0.6132076, g: 0.33842117, b: 0.33842117, a: 1}
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 0
@@ -424,8 +424,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 70.77506, y: 26.451866, z: 0.14331818}
-  m_Center: {x: -0.322096, y: 0.10877609, z: -0.028409958}
+  m_Size: {x: 69.70705, y: 28.885359, z: 0.14331818}
+  m_Center: {x: -0.6112287, y: 0.5422748, z: -0.028409958}
 --- !u!114 &636692891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -991,9 +991,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1161619018}
   - component: {fileID: 1161619017}
-  - component: {fileID: 1161619016}
   - component: {fileID: 1161619020}
   - component: {fileID: 1161619019}
+  - component: {fileID: 1161619021}
+  - component: {fileID: 1161619016}
   m_Layer: 0
   m_Name: Virtual Mouse Pointer
   m_TagString: Untagged
@@ -1010,18 +1011,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1161619015}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a71fa226b7a2e7d428eb99b1698a8cdb, type: 3}
+  m_Script: {fileID: 11500000, guid: 1ce55ed5982705040a271e736ea2d4da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RenderCam: {fileID: 252947548}
-  mouseComputerTexture: {fileID: 2800000, guid: 95afcf069ad741a4798add0f2257ad13,
-    type: 3}
-  cursorMode: 0
-  hotSpot: {x: 0, y: 0}
-  computerScreen:
-    serializedVersion: 2
-    m_Bits: 512
-  m_EventSystem: {fileID: 1518827346}
 --- !u!212 &1161619017
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1127,6 +1119,22 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1161619021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161619015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32986cd208f5ddc46b391ee363a004b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RenderCam: {fileID: 252947548}
+  computerScreen:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &1518827344
 GameObject:
   m_ObjectHideFlags: 0
