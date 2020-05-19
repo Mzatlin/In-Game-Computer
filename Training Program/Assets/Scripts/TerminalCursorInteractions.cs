@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TerminalCursorInteractions : MonoBehaviour
+public class TerminalCursorInteractions : MonoBehaviour, ITerminalCursorInteraction
 {
     Camera cam;
     Ray renderRay;
@@ -18,7 +18,7 @@ public class TerminalCursorInteractions : MonoBehaviour
         CheckMouseClick();
     }
 
-    void CheckMouseClick()
+    public void CheckMouseClick()
     {
         renderRay = new Ray(transform.position, transform.forward);
         Debug.DrawRay(renderRay.origin, renderRay.direction * 100);

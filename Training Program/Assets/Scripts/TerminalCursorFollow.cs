@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TerminalCursorFollow : MonoBehaviour
+public class TerminalCursorFollow : MonoBehaviour, ISetTerminalCursor
 {
     [SerializeField]
     Camera RenderCam;
     [SerializeField]
     LayerMask computerScreen;
     Camera cam;
-    Ray mouseRay;
+    Ray mouseRay; 
     RaycastHit hit;
     CursorMode cursorMode = CursorMode.Auto;
     Vector3 textureToCam;
@@ -26,7 +26,7 @@ public class TerminalCursorFollow : MonoBehaviour
         SetCursorOnScreen();
     }
 
-    void SetCursorOnScreen()
+    public void SetCursorOnScreen()
     {
         mouseRay = cam.ScreenPointToRay(Input.mousePosition);
         Debug.DrawRay(cam.transform.position, mouseRay.direction * 100);
