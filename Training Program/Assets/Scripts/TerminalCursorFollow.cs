@@ -20,12 +20,6 @@ public class TerminalCursorFollow : MonoBehaviour, ISetTerminalCursor
         cam = Camera.main;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        SetCursorOnScreen();
-    }
-
     public void SetCursorOnScreen()
     {
         mouseRay = cam.ScreenPointToRay(Input.mousePosition);

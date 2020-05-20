@@ -9,13 +9,10 @@ public class TerminalCursorInteractions : MonoBehaviour, ITerminalCursorInteract
     private RaycastHit renderHit;
     IClickable buttonHit;
 
+
     void Start()
     {
         cam = Camera.main;
-    }
-    void Update()
-    {
-        CheckMouseClick();
     }
 
     public void CheckMouseClick()
