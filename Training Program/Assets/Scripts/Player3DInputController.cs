@@ -17,6 +17,7 @@ public class Player3DInputController : MonoBehaviour
     void Start()
     {
         movePhysics = GetComponent<Player3DMovePhysics>();
+        cam = Camera.main;
     }
 
     void Update()
