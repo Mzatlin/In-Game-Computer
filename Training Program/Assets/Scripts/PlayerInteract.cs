@@ -14,7 +14,7 @@ public class PlayerInteract : MonoBehaviour {
     float distanceFromObject = 6f;
    public bool IsInteracting
     {
-        get { return _isInteracting; }
+        get { return _isInteracting; } //add an interface
         set { _isInteracting = value; }
     }
 	// Use this for initialization
@@ -32,7 +32,6 @@ public class PlayerInteract : MonoBehaviour {
             var dot = Vector3.Dot(transform.forward, hit.transform.forward);
             if(dot < 0 && Vector3.Distance(transform.position,hit.transform.position)<distanceFromObject)
             {
-                Debug.Log("Hit!");
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     playerstate.SetState(new InteractComputer(playerstate));

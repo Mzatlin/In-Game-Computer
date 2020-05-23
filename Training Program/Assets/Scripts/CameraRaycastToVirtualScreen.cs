@@ -25,11 +25,11 @@ public class CameraRaycastToVirtualScreen : MonoBehaviour
 
         if (Physics.Raycast(mouseRay, out screenHit, Mathf.Infinity, screenLayer))
         {
-            Cursor.visible = false;
+     //       Cursor.visible = false;
         }
         else
         {
-            Cursor.visible = true;
+      //      Cursor.visible = true;
         }
     }
 

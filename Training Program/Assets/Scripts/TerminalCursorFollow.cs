@@ -11,7 +11,7 @@ public class TerminalCursorFollow : MonoBehaviour, ISetTerminalCursor
     Camera cam;
     Ray mouseRay; 
     RaycastHit hit;
-    CursorMode cursorMode = CursorMode.Auto;
+    //CursorMode cursorMode = CursorMode.Auto;
     Vector3 textureToCam;
 
     // Start is called before the first frame update
@@ -27,14 +27,14 @@ public class TerminalCursorFollow : MonoBehaviour, ISetTerminalCursor
         if (Physics.Raycast(mouseRay, out hit, Mathf.Infinity, computerScreen))  //Should be in separate class - converts mouse position to ray.
         {
             //Set computer cursor to computer screen
-            Cursor.visible = false;
+       //     Cursor.visible = false;
             textureToCam = RenderCam.ViewportToWorldPoint(new Vector3(hit.textureCoord.x, hit.textureCoord.y, 10));
             transform.position = textureToCam;
 
         }
         else
         {
-            Cursor.SetCursor(null, Vector2.zero, cursorMode);
+     //      Cursor.SetCursor(null, Vector2.zero, cursorMode);
         }
     }
 }
