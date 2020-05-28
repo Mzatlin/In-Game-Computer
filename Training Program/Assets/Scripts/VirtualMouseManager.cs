@@ -19,15 +19,26 @@ public class VirtualMouseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if in correct state, change pointer texter, check for clicks/hovers, etc. 
-        if (cursor != null)
-        {
-            cursor.SetCursorOnScreen();
-        }
-        if(interaction != null)
-        {
-            interaction.CheckMouseClick();
-        }
+       ProcessCursorFunctions();
+    }
 
+    bool CanProcess()
+    {
+        //if in correct state, change pointer texter, check for clicks/hovers, etc. 
+        return true;
+    }
+    void ProcessCursorFunctions()
+    {
+        if (CanProcess())
+        {
+            if (cursor != null)
+            {
+                cursor.SetCursorOnScreen();
+            }
+            if (interaction != null)
+            {
+                interaction.CheckMouseClick();
+            }
+        }
     }
 }
