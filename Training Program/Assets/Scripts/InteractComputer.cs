@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractComputer : PlayerStateBase{
-
+public class InteractComputer : PlayerStateBase
+{
+    StateMachineEvents playerInteractEvent; //todo - since this is not a monobehaviour, I'm going to need to create a new class that creates the scriptable object. 
     PlayerStateMachine player;
     public InteractComputer(PlayerStateMachine _player) : base(_player)
     {
@@ -23,12 +24,17 @@ public class InteractComputer : PlayerStateBase{
 
     public override void OnStateEnter()
     {
+        if(playerInteractEvent != null)
+        {
+            playerInteractEvent.EnterInteractComputer();
+        }
         Debug.Log("You just entered State 2");
     }
 
     public override void OnStateExit()
     {
         Debug.Log("Leaving State 2");
+        playerInteractEvent.LeaveInteractComputer();
     }
 
     void ExitOnKeyPress()

@@ -66,7 +66,7 @@ public class MoveCameraToPoint : MonoBehaviour
         start.transform.position = Vector3.Lerp(start.transform.position, fixationPoint.position, moveSpeed * Time.deltaTime);
 
         // mainCam.transform.LookAt(monitor);
-        var q = Quaternion.LookRotation(fixationPoint.position - fixationPoint.transform.position);
-        start.transform.rotation = Quaternion.RotateTowards(start.transform.rotation, q, 90.0f * Time.deltaTime);
+       // var q = Quaternion.LookRotation(fixationPoint.position - fixationPoint.transform.position);
+       // start.transform.rotation = Quaternion.RotateTowards(start.transform.rotation, q, 90.0f * Time.deltaTime);
     }
 }
