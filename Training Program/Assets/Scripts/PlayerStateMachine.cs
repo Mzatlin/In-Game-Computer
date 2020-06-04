@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerStateMachine : MonoBehaviour {
 
     private PlayerStateBase currentState;
+    public List<StateMachineEvents> stateEvents = new List<StateMachineEvents>();
     public Camera mainCam;
 
     void Awake()

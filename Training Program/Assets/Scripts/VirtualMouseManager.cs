@@ -1,9 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class VirtualMouseManager : MonoBehaviour
 {
+    [SerializeField]
+    StateMachineEvents InteractComputer;
+    [SerializeField]
+    bool isActive = false;
     ITerminalCursorInteraction interaction;
     ISetTerminalCursor cursor;
     //This class will determine if the player is in the correct state
@@ -14,12 +19,34 @@ public class VirtualMouseManager : MonoBehaviour
     {
         cursor = GetComponent<ISetTerminalCursor>();
         interaction = GetComponent<ITerminalCursorInteraction>();
+        InteractComputer.OnInteractComputerEvent += HandleEventEntry;
+        InteractComputer.OnLeaveInteractComputerEvent += HandleEventLeave;
+    }
+
+    void OnDestroy()
+    {
+        InteractComputer.OnInteractComputerEvent -= HandleEventEntry;
+        InteractComputer.OnLeaveInteractComputerEvent -= HandleEventLeave;
+    }
+
+    void HandleEventLeave()
+    {
+        isActive = false;
+    }
+
+    void HandleEventEntry()
+    {
+        isActive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-       ProcessCursorFunctions();
+        if (isActive)
+        {
+            ProcessCursorFunctions();
+        }
+
     }
 
     bool CanProcess()

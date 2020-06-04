@@ -1483,7 +1483,7 @@ GameObject:
   - component: {fileID: 1493152669}
   - component: {fileID: 1493152668}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UICanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1682,6 +1682,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6458fe6c603c44ebe521bcbcdbd4c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stateEvents:
+  - {fileID: 11400000, guid: 9310afa61678dbc449b9b0f5d3d0dd71, type: 2}
   mainCam: {fileID: 0}
 --- !u!114 &1651500722
 MonoBehaviour:

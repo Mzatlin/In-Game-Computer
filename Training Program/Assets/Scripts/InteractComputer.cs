@@ -9,6 +9,7 @@ public class InteractComputer : PlayerStateBase
     public InteractComputer(PlayerStateMachine _player) : base(_player)
     {
         player = _player;
+        playerInteractEvent = player.stateEvents[0];
     }    
 
     public override void Tick()
@@ -27,6 +28,7 @@ public class InteractComputer : PlayerStateBase
         if(playerInteractEvent != null)
         {
             playerInteractEvent.EnterInteractComputer();
+
         }
         Debug.Log("You just entered State 2");
     }
