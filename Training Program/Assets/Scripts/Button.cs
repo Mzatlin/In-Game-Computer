@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class Button : MonoBehaviour, IClickable {
+public class Button : MonoBehaviour, IClickable, IButton{
 
-    public static event Action OnClicked = delegate { };
+    public event Action OnClicked = delegate { };
     bool isHovering;
     public bool IsHovering  { get { return isHovering; } set { isHovering = value; } }
 

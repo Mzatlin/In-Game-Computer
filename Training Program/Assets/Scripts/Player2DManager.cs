@@ -7,11 +7,12 @@ public class Player2DManager : MonoBehaviour, ICanMove
 {
     [SerializeField]
     StateMachineEvents interactComputer;
+    [SerializeField]
     bool canMove;
-    public bool CanMove{ get{ return canMove; } set{ canMove = value; ; }  }
+    public bool CanMove{ get{ return canMove; } set{ canMove = value; }  }
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if(interactComputer != null)
         {
@@ -25,12 +26,12 @@ public class Player2DManager : MonoBehaviour, ICanMove
         interactComputer.OnLeaveInteractComputerEvent -= HandleLeave;
     }
 
-    private void HandleLeave()
+    void HandleLeave()
     {
         canMove = false;
     }
 
-    private void HandleEnter()
+    void HandleEnter()
     {
         canMove = true;
     }
