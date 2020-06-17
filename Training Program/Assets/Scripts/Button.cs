@@ -13,5 +13,6 @@ public class Button : MonoBehaviour, IClickable, IButton{
    public void HandleClick()
     {
         OnClicked();
+        gameObject.SetActive(false);
     }
 }
