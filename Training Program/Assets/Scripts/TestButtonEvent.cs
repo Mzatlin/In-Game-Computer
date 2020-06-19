@@ -18,9 +18,5 @@ public class TestButtonEvent : MonoBehaviour
         Debug.Log("Testing123456");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

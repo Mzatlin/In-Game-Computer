@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,7 +30,9 @@ public class PlayerInteract : MonoBehaviour
     void FixedUpdate()
     {
         DrawInteractionRay();
+        CheckInput();
     }
+
 
     void DrawInteractionRay()
     {
@@ -37,22 +40,33 @@ public class PlayerInteract : MonoBehaviour
         Debug.DrawRay(playerRay.origin, playerRay.direction * 100, Color.red);
         if (Physics.Raycast(playerRay, out hit, 10f, LayerMask.GetMask("Interactable")))
         {
-            SetStateWithinDistance();
+            FindDistance();
         }
     }
 
-    void SetStateWithinDistance()
+    void CheckInput()
     {
-        var dot = Vector3.Dot(transform.forward, hit.transform.forward);
-        if (dot < 0 && Vector3.Distance(transform.position, hit.transform.position) < distanceFromObject)
+        if (FindDistance())
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 playerstate.SetState(new InteractComputer(playerstate));
             }
         }
-        //throw an event that passes the transform of the fixation point, because all interactable object have fixationpoints 
-        //Or maybe have it to where the camera fixates on an exact offset? 
+
+    }
+
+    bool FindDistance()
+    {
+        var dot = Vector3.Dot(transform.forward, hit.transform.forward);
+        if (dot < 0 && Vector3.Distance(transform.position, hit.transform.position) < distanceFromObject)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }
