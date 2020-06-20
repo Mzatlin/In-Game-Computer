@@ -8,6 +8,7 @@ public class PlayerInteract : MonoBehaviour
 
     PlayerStateMachine playerstate;
     private bool _isInteracting;
+    IFindDistance distance;
     Ray playerRay;
     RaycastHit hit;
     [SerializeField]
@@ -22,6 +23,7 @@ public class PlayerInteract : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        distance = GetComponent<IFindDistance>();
         playerstate = GetComponent<PlayerStateMachine>();
         //   playerstate.SetState(new InteractComputer(playerstate));
     }
@@ -29,24 +31,32 @@ public class PlayerInteract : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        DrawInteractionRay();
-        CheckInput();
+        if (DrawInteractionRay())
+        {
+            CheckInput();
+        }
+
     }
 
 
-    void DrawInteractionRay()
+    bool DrawInteractionRay()
     {
         playerRay = new Ray(transform.position, transform.forward);
         Debug.DrawRay(playerRay.origin, playerRay.direction * 100, Color.red);
         if (Physics.Raycast(playerRay, out hit, 10f, LayerMask.GetMask("Interactable")))
         {
-            FindDistance();
+            return true;
         }
+        else
+        {
+            return false;
+        }
+
     }
 
     void CheckInput()
     {
-        if (FindDistance())
+        if (distance != null && distance.FindDistance(hit))
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -56,7 +66,7 @@ public class PlayerInteract : MonoBehaviour
 
     }
 
-    bool FindDistance()
+  /*  bool FindDistance()
     {
         var dot = Vector3.Dot(transform.forward, hit.transform.forward);
         if (dot < 0 && Vector3.Distance(transform.position, hit.transform.position) < distanceFromObject)
@@ -67,6 +77,6 @@ public class PlayerInteract : MonoBehaviour
         {
             return false;
         }
-    }
+    }*/
 
 }
