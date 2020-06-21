@@ -13,8 +13,6 @@ public class PlayerInteract : MonoBehaviour
     RaycastHit hit;
     [SerializeField]
     LayerMask mask;
-    [SerializeField]
-    float distanceFromObject = 6f;
     public bool IsInteracting
     {
         get { return _isInteracting; } //add an interface
@@ -25,7 +23,6 @@ public class PlayerInteract : MonoBehaviour
     {
         distance = GetComponent<IFindDistance>();
         playerstate = GetComponent<PlayerStateMachine>();
-        //   playerstate.SetState(new InteractComputer(playerstate));
     }
 
     // Update is called once per frame
@@ -42,7 +39,6 @@ public class PlayerInteract : MonoBehaviour
     bool DrawInteractionRay()
     {
         playerRay = new Ray(transform.position, transform.forward);
-        Debug.DrawRay(playerRay.origin, playerRay.direction * 100, Color.red);
         if (Physics.Raycast(playerRay, out hit, 10f, LayerMask.GetMask("Interactable")))
         {
             return true;
@@ -65,18 +61,5 @@ public class PlayerInteract : MonoBehaviour
         }
 
     }
-
-  /*  bool FindDistance()
-    {
-        var dot = Vector3.Dot(transform.forward, hit.transform.forward);
-        if (dot < 0 && Vector3.Distance(transform.position, hit.transform.position) < distanceFromObject)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }*/
 
 }
