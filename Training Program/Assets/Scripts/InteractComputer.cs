@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractComputer : PlayerStateBase
 {
-    StateMachineEvents playerInteractEvent; //todo - since this is not a monobehaviour, I'm going to need to create a new class that creates the scriptable object. 
+    StateMachineEvents playerInteractEvent; 
     PlayerStateMachine player;
     public InteractComputer(PlayerStateMachine _player) : base(_player)
     {
